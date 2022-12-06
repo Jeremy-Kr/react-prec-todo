@@ -54,3 +54,9 @@
 .delete-button {
   border-color: red;
 }
+
+.todo-input {
+  margin: 0 10px;
+  border-radius: 5px;
+  border: 1px solid #0f4c81;
+}

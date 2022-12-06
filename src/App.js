@@ -1,11 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import {
-  Header,
-  CreateTodoForm,
-  Todo,
-  CardSection,
-} from "./components/index.js";
+import { Header, CreateTodoForm, CardSection } from "./components/index.js";
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -25,18 +20,22 @@ function App() {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    const newTodoList = [
-      ...todoList,
-      {
-        id: todoList.length === 0 ? 0 : todoList[todoList.length - 1].id + 1,
-        title: event.target.title.value,
-        text: event.target.text.value,
-        isDone: false,
-      },
-    ];
-    setTodoList(newTodoList);
-    event.target.title.value = "";
-    event.target.text.value = "";
+    if (event.target.title.value && event.target.text.value) {
+      const newTodoList = [
+        ...todoList,
+        {
+          id: todoList.length === 0 ? 0 : todoList[todoList.length - 1].id + 1,
+          title: event.target.title.value,
+          text: event.target.text.value,
+          isDone: false,
+        },
+      ];
+      setTodoList(newTodoList);
+      event.target.title.value = "";
+      event.target.text.value = "";
+    } else {
+      alert("제목과 내용은 빈칸일 수 없습니다.");
+    }
   };
 
   const todoSwitch = (event) => {
