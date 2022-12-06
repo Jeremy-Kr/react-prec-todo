@@ -18,15 +18,15 @@ function App() {
     },
   ]);
 
-  const onSubmitHandler = (event) => {
+  const onSubmitHandler = (event, todoTitle, todoText) => {
     event.preventDefault();
     if (event.target.title.value && event.target.text.value) {
       const newTodoList = [
         ...todoList,
         {
           id: todoList.length === 0 ? 0 : todoList[todoList.length - 1].id + 1,
-          title: event.target.title.value,
-          text: event.target.text.value,
+          title: todoTitle,
+          text: todoText,
           isDone: false,
         },
       ];
